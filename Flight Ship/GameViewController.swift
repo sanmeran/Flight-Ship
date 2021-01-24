@@ -41,10 +41,14 @@ class GameViewController: UIViewController {
         
         // retrieve the ship node
         let ship = scene.rootNode.childNode(withName: "ship", recursively: true)!
-        ship.position.z = -100
+        ship.position.z = -105
         
         // animate the 3d object
-//        ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
+        ship.runAction(SCNAction.move(to: SCNVector3(), duration: 5)) {
+            ship.removeFromParentNode()
+        print(#line, "GAME OVER")
+        }
+        
         
         // retrieve the SCNView
         let scnView = self.view as! SCNView
